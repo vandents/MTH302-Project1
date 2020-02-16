@@ -5,6 +5,31 @@ CHUTES_LADDERS = {
   2:15
 }
 
+
+# Prints out a matrix
+def printMatrix(M, message: str):
+  print('\n\033[1m\u001b[45m ' + message + ' \033[0m')
+  printString = '\t\033[1m\033[95m'
+
+  for i in range(len(M)):
+    printString += str(i) + '\t'
+  printString += '\t\033[0m'
+
+  col = 0
+
+  for i in range(len(M)):
+    for j in range(len(M[0])):
+      if j == 0:
+        printString += '\n\033[1m\033[95m' + str(col) + '\t\033[0m'
+        col = col + 1
+
+      temp = round(M[i, j], 2)
+      if temp == 0.0:
+        temp = 0
+      printString += str(temp) + '\t'
+
+  print(printString + '\n\n')
+
 def cl_markov_matrix(max_roll=6, jump_at_end=True):
   """
   Create a Markov transition matrix
@@ -35,6 +60,7 @@ def cl_markov_matrix(max_roll=6, jump_at_end=True):
     return mat @ cl_mat
 
 mat = cl_markov_matrix()
+printMatrix(mat, 'mat   >>   Final')
 plt.matshow(mat)
 plt.grid(False)
 plt.show()
