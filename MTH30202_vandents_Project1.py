@@ -250,7 +250,6 @@ printHeader()
 
 printSubheading(1, 'Transition matrix')
 printMatrix(T, 'T ' + RESET + BKGD_COLOR + '  >>   Transition matrix')
-# printMatrix(P, 'P ' + RESET + BKGD_COLOR + '  >>   T, but with the last row and column removed')
 
 
 
@@ -259,11 +258,6 @@ printMatrix(T, 'T ' + RESET + BKGD_COLOR + '  >>   Transition matrix')
 # -----------------------------------------------------------------------------
 
 printSubheading(2, 'Markov chains')
-
-# The player starts at position 0.
-# v = np.zeros(NUM_SQUARES)
-# v[0] = 1
-# printVector(v, 'v ' + RESET + BKGD_COLOR + '  >>   Initial position')
 
 # Print select Markov chains
 for n in range(findSmallestN()):
