@@ -2,25 +2,53 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# Prints out the board
+# Color escape sequences
+TEXT_COLOR = '\u001b[34;1m'
+BKGD_COLOR = '\u001b[44m'
+BCKGD_COLOR_WHITE = '\u001b[47;1m'
+RESET = '\u001b[0m'
+BOLD = '\u001b[1m'
+ITALIC = '\u001b[3m'
+
+
+
+##########################
+#  Functions
+##########################
+
+# Prints out a matrix
 def printMatrix(M, message: str):
-  print('\n' + message)
-  printString = ''
+  print('\n' + RESET + BOLD + BKGD_COLOR + ' ' + message + ' ' + RESET)
+  printString = '\t' + BOLD + TEXT_COLOR
+
+  for i in range(len(M)):
+    printString += str(i) + '\t'
+  printString += '\t\033[0m'
+
+  col = 0
 
   for i in range(len(M)):
     for j in range(len(M[0])):
-      temp = round(M[i, j], 2)
+      if j == 0:
+        printString += '\n' + BOLD + TEXT_COLOR + str(col) + '\t\033[0m'
+        col = col + 1
+
+      temp = round(M[i][j], 2)
       if temp == 0.0:
         temp = 0
       printString += str(temp) + '\t'
-    printString += '\n'
 
-  print(printString + '\n')
+  print(printString + '\n\n')
 
-# Prints out the player vector
+# Prints out a vector
 def printVector(vector, message: str):
-  print('\n' + message)
-  printString = ''
+  print('\n' + RESET + BOLD + BKGD_COLOR + ' ' + message + ' \033[0m')
+
+  printString = BOLD + '\t' + TEXT_COLOR
+
+  for i in range(len(vector)):
+    printString += str(i) + '\t'
+  printString += '\033[0m\n\t'
 
   for i in range(len(vector)):
     temp = round(vector[i], 2)
@@ -41,10 +69,9 @@ print(
   '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n')
 
 
-ladders = [(2, 3), (4, 23)]
-# snakes = [(11,7), (18,13), (28,12), (36,34), (77,16), (47,26), (83,39), (92,75), (99,70)]
-# snakes = [(10, 9)]
-snakes = []
+
+ladders = [(13, 18)]
+snakes = [(14, 10)]
 trans = ladders + snakes
 
 # Set up the transition matrix
