@@ -190,7 +190,7 @@ P = T[0 : NUM_SQUARES - 1, 0: NUM_SQUARES - 1]
 printGameInfo()
 
 printMatrix(T, 'T ' + RESET + BKGD_COLOR + '  >>   Transition Matrix')
-printMatrix(P, 'P ' + RESET + BKGD_COLOR + '  >>   T, but with the last row and column removed')
+# printMatrix(P, 'P ' + RESET + BKGD_COLOR + '  >>   T, but with the last row and column removed')
 
 
 
@@ -203,11 +203,12 @@ v = np.zeros(NUM_SQUARES)
 v[0] = 1
 # printVector(v, 'v ' + RESET + BKGD_COLOR + '  >>   Initial position')
 
-P2 = np.copy(P)
+# Print select Markov chains
 for n in range(findSmallestN()):
-  v = np.dot(v, T)
-  # P2 = np.linalg.matrix_power(P2, n + 2)
-  # printMatrix(P2, 'P^' + str(n + 2) + ' ' + RESET + BKGD_COLOR + '  >>   Step ' + str(n + 1))
+  if n == 0 or n == 1 or n == 9:
+    P2 = np.copy(P)
+    P2 = np.linalg.matrix_power(P2, n + 1)
+    printMatrix(P2, 'P^' + str(n + 1) + ' ' + RESET + BKGD_COLOR + '  >>   Markov step ' + str(n + 1))
 
 
 
