@@ -54,10 +54,10 @@ def printHeader():
   short_blank = ''
   long_blank = ''
 
-  for _ in range(round((211 - len(welcomeMsg)) / 2)):
+  for _ in range(round((213 - len(welcomeMsg)) / 2)):
     short_blank += ' '
 
-  for _ in range(211):
+  for _ in range(213):
     long_blank += ' '
 
   print(
@@ -89,7 +89,7 @@ def printHeader():
 
   print(BOLD + BKGD_COLOR + ' Game Info ' + RESET)
   print(TEXT_COLOR + '  >> ' + RESET + BOLD + ' N' + RESET + ':', findSmallestN())
-  print(TEXT_COLOR + '  >> ' + RESET + BOLD + ' Board' + RESET + ': ' + str(NUM_SQUARES) + ' x ' + str(NUM_SQUARES))
+  print(TEXT_COLOR + '  >> ' + RESET + BOLD + ' Board' + RESET + ': ' + str(NUM_SQUARES))
   print(TEXT_COLOR + '  >> ' + RESET + BOLD + ' det(T)' + RESET + ':', np.linalg.det(T))
   print(TEXT_COLOR + '  >> ' + RESET + BOLD + ' Snakes' + RESET + ':', snakesString)
   print(TEXT_COLOR + '  >> ' + RESET + BOLD + ' Ladders' + RESET + ':', ladderString, '\n')
